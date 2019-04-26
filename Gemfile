@@ -62,7 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-
-# Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'pg'
 end
