@@ -11,10 +11,10 @@
 
    def index
      @articles = Article.all
+     # @articles = Article.paginate(page: params[:page])
    end
 
    def create
-     debugger
      @article = Article.new(article_params)
      @article.user = User.first
      if @article.save
