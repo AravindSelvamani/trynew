@@ -1,5 +1,6 @@
 <h2 align='center'> Title: <%= @article.title %> </h2>
-<div class="well col-xs-8 col-xs-offset-2">
+<div class="block-hight">
+<div class="well col-xs-8 col-xs-offset-2 block-hight">
   <h4 class='center description'><strong>Description:</strong></h4>
   <hr>
     <%= simple_format(@article.description) %>
@@ -10,4 +11,24 @@
                                         class: "btn btn-xs btn-danger" %>
       <%= link_to "View all articles", articles_path ,class: "btn btn-xs btn-success" %>
     </div>
+</div>
+
+<% if @article.user %>
+<div class="listing">
+  <div class="row center">
+  <div class="col-md-2">
+    <div class="thumbnail">
+      <p class='center'> <b> Created by: </b> </p>
+      <%= link_to gravator_for(@article.user), user_path(@article.user) %>
+      <div class="caption">
+        <%= link_to @article.user.username, user_path(@article.user) ,class:'article-title' %>
+        <p> <b> <%= pluralize(@article.user.articles.count, "article") if @article.user.articles%> </b> </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+
+
 </div>
