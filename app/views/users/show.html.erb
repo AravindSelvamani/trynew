@@ -1,0 +1,8 @@
+<h1 align='center'> Welcome <%= @user.username %> page </h1>
+<div class="row">
+  <div class="col-md-s center">
+    <%= gravator_for @user , size: 150 %>
+  </div>
+</div>
+<h4 align='center'> <%= @user.username %> articles </h4>
+<%= render 'articles/article', obj: @user.articles %> 
