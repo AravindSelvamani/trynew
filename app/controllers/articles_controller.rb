@@ -1,7 +1,8 @@
  class ArticlesController < ApplicationController
 
    before_action :set_article, only:[:edit,:update,:show,:destroy]
-
+   before_action :required_user, except:[:index, :show]
+   before_action :required_same_user, only:[:edit,:update,:destroy]
    def new
      @article = Article.new
    end
@@ -51,6 +52,13 @@
 
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    def required_same_user
+      unless current_user == @article.user
+        flash[:danger] = "Your are restricted to edit this article"
+        redirect_to articles_path
+      end
     end
 
  end

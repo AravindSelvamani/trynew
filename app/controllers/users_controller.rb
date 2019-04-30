@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only:[:show, :edit, :update, :destroy]
+  before_action :required_same_user, only:[:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -49,6 +50,13 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def required_same_user
+      unless logged_in? && current_user == @user
+        flash[:danger] = "You can edit only your account once you logged in"
+        redirect_to articles_path
+      end
     end
 
 end
