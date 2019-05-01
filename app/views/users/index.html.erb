@@ -7,7 +7,7 @@
           <%= link_to user.username, user_path(user) ,class:'article-title col-md-offset-2' %>
         </li>
         <li class='center'><small> <b><%= pluralize(user.articles.count, "article") if user.articles%> </b> </small> </li>
-        <% if logged_in? and current_user.admin? %>
+        <% if logged_in? and current_user.admin? and current_user!=user %>
            <li align = 'right'>
              <%= link_to "Delete user", user_path(user), method: :delete,
                     data: {confirm: "Are you sure you want to delete the user and all their articles?"},
