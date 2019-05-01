@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 #For view DB datas in Table format
 gem "table_print"
-
+gem 'awesome_print', '~> 1.8'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

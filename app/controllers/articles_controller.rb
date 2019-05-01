@@ -55,7 +55,7 @@
     end
 
     def required_same_user
-      unless current_user == @article.user
+      unless (current_user == @article.user) || current_user.admin?
         flash[:danger] = "Your are restricted to edit this article"
         redirect_to articles_path
       end
